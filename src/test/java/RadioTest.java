@@ -6,7 +6,7 @@ public class RadioTest {
 
     @Test
     void testSetNextChannelMiddle(){
-        Radio myRadio = new Radio(); // создаем объект типа радио
+        Radio myRadio = new Radio(55); // создаем объект типа радио с количеством каналов 55 (нужно для покрытия кода тестами)
         myRadio.setChannel(5); // устанавливаем текущий канал в серединку
         myRadio.setNextChannel(); // нажали на кнопочку следующий канал
         int actual = myRadio.getCurrentChannel(); // получили текущей номер канала после нажатия на нопку
@@ -57,7 +57,7 @@ public class RadioTest {
     void testSetChannelMoreThanMax(){
         Radio myRadio = new Radio(); // создаем объект типа радио
         myRadio.setChannel(6); // устанавливаем текущий канал в нормальное значение
-        myRadio.setChannel(55); // пробуем устанавить текущий канал в ненормальное значение
+        myRadio.setChannel(158); // пробуем устанавить текущий канал в ненормальное значение
         int actual = myRadio.getCurrentChannel(); // получили текущей номер канала
         int expected = 6; // в теории должны получить то же самое
         assertEquals(expected, actual);
@@ -106,10 +106,10 @@ public class RadioTest {
     @Test
     void testSetMoreThanMaxSound(){
         Radio myRadio = new Radio(); // создаем объект типа радио
-        myRadio.setSoundLevel(10); // устанавливаем громкость в максимум
+        myRadio.setSoundLevel(100); // устанавливаем громкость в максимум
         myRadio.setMoreLoud(); // повышаем тукущую громкость на единицу
         int actual = myRadio.getCurrentLoud(); // получили текущей номер громкости
-        int expected = 10; // в теории должны получить опять десятку
+        int expected = 100; // в теории должны получить опять десятку
         assertEquals(expected, actual);
     }
 
@@ -126,7 +126,7 @@ public class RadioTest {
     void testSetCurrentSoundMoreThanMax(){ // проверяем второй сеттер. по заданию он не нужен но пришлось его использовать и проверять для 100% проверок
         Radio myRadio = new Radio(); // создаем объект типа радио
         myRadio.setSoundLevel(7); // устанавливаем громкость в нормальное значение
-        myRadio.setSoundLevel(77); // устанавливаем громкость в ненормальное значение
+        myRadio.setSoundLevel(177); // устанавливаем громкость в ненормальное значение
         int actual = myRadio.getCurrentLoud(); // получили текущей номер громкости
         int expected = 7; // в теории должны получить то же самое что и установили в нормальном значении
         assertEquals(expected, actual);
